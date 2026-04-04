@@ -98,10 +98,19 @@ export default function AdminDashboard() {
           <h3>🔗 Useful Links</h3>
 
           <ul>
-            {links.length > 0 ? links.map((item, i) => (
-              <li key={i}>{item}</li>
-            )) : <li>No data</li>}
-          </ul>
+  {links.length > 0 ? links.map((item, i) => (
+    <li key={i}>
+      <a
+        href={item.startsWith("http") ? item : `https://${item}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "#4facfe", textDecoration: "none" }}
+      >
+        🔗 {item}
+      </a>
+    </li>
+  )) : <li>No data</li>}
+</ul>
 
           <div className="input-row">
             <input

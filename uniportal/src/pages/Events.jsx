@@ -1,107 +1,71 @@
 import { useState, useEffect } from "react";
+import "./Events.css";
 
-function Events(){
+function Events() {
+  const [search, setSearch] = useState("");
+  const [events, setEvents] = useState([]);
 
-const [filter,setFilter] = useState("all");
-const [search,setSearch] = useState("");
-const [liked,setLiked] = useState([]);
+  // 🔥 FETCH FROM BACKEND
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dashboard/events")
+      .then(res => res.json())
+      .then(data => setEvents(data))
+      .catch(err => console.log(err));
+  }, []);
 
-const [events,setEvents] = useState([]);
+  const filtered = events.filter((e) =>
+    e.title.toLowerCase().includes(search.toLowerCase())
+  );
 
-useEffect(()=>{
-  const saved = JSON.parse(localStorage.getItem("events")) || [];
+  return (
+    <>
+      <div className="top-strip"></div>
 
-  const today = new Date();
+      <div className="events-page">
 
-  const updated = saved.map(event => {
-    const eventDate = new Date(event.date);
-    return {
-      ...event,
-      type: eventDate >= today ? "upcoming" : "past",
-      status: eventDate >= today ? "SOON" : "PAST"
-    };
-  });
+        <h2 className="events-heading">🎉 Events</h2>
 
-  setEvents(updated);
-},[]);
+        {/* SEARCH */}
+        <div className="events-search">
+          <input
+            type="text"
+            placeholder="Search events..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-const toggleLike = (index)=>{
-  if(liked.includes(index)){
-    setLiked(liked.filter(i=>i!==index));
-  } else {
-    setLiked([...liked,index]);
-  }
-};
+        {/* TRENDING */}
+        <h3 className="trending-title">🔥 Trending</h3>
 
-const filteredEvents = events.filter(event => {
-  const matchFilter = filter === "all" || event.type === filter;
-  const matchSearch = event.title.toLowerCase().includes(search.toLowerCase());
-  return matchFilter && matchSearch;
-});
+        {/* CARDS */}
+        <div className="event-grid">
+          {filtered.length > 0 ? (
+            filtered.map((event, index) => (
+              <div key={index} className="event-card">
 
-return(
+                <span className="badge">SOON</span>
 
-<div className="events-page">
+                <h3>{event.title}</h3>
 
-<h2 className="events-heading">🎉 Events</h2>
+                <p className="date">
+                  {new Date(event.date).toDateString()}
+                </p>
 
-<div className="events-search">
-<input
-type="text"
-placeholder="Search events..."
-value={search}
-onChange={(e)=>setSearch(e.target.value)}
-/>
-</div>
+                <button className="event-btn">
+                  Register
+                </button>
 
-<div className="trending">
-<h3>🔥 Trending</h3>
-<div className="trending-row">
-{events.slice(0,2).map((e,i)=>(
-<div key={i} className="trend-card">{e.title}</div>
-))}
-</div>
-</div>
+              </div>
+            ))
+          ) : (
+            <p>No events available</p>
+          )}
+        </div>
 
-<div className="events-filter">
-<button onClick={()=>setFilter("all")}>All</button>
-<button className="chip green" onClick={()=>setFilter("upcoming")}>Upcoming</button>
-<button className="chip grey" onClick={()=>setFilter("past")}>Past</button>
-</div>
-
-<div className="events-grid">
-
-{filteredEvents.map((event,index)=>(
-<div key={index} className={`event-card ${event.type}`}>
-
-<span className="like-btn" onClick={()=>toggleLike(index)}>
-{liked.includes(index) ? "❤️" : "🤍"}
-</span>
-
-<span className={`status ${event.status.toLowerCase()}`}>
-{event.status}
-</span>
-
-<h3>{event.title}</h3>
-<p>{new Date(event.date).toDateString()}</p>
-
-{event.formLink ? (
-  <a href={event.formLink} target="_blank" rel="noreferrer">
-    <button className="view-btn">Register</button>
-  </a>
-) : (
-  <button className="view-btn" disabled>No Link</button>
-)}
-
-</div>
-))}
-
-</div>
-
-</div>
-
-);
-
+      </div>
+    </>
+  );
 }
 
 export default Events;

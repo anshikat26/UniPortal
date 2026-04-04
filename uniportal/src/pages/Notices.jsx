@@ -1,115 +1,102 @@
 import { useState, useEffect } from "react";
 import "./Notices.css";
 
-function Notices(){
+function Notices() {
+  const [search, setSearch] = useState("");
+  const [notices, setNotices] = useState([]);
 
-const [search,setSearch] = useState("");
-const [notices,setNotices] = useState([]);
-useEffect(()=>{
-  const saved = JSON.parse(localStorage.getItem("events"));
+  // 🔥 FETCH FROM BACKEND
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dashboard/notices")
+      .then(res => res.json())
+      .then(data => {
+        const updated = data.map((item) => ({
+          ...item,
+          tag: item.title.toLowerCase().includes("exam")
+            ? "important"
+            : item.title.toLowerCase().includes("hackathon")
+            ? "hot"
+            : "normal",
+        }));
 
-  if(saved && saved.length > 0){
-    const updated = saved.map(item => ({
-      ...item,
-      tag:
-        item.title.toLowerCase().includes("exam") ? "important" :
-        item.title.toLowerCase().includes("event") ? "hot" :
-        "normal"
-    }));
-    setNotices(updated);
-  } else {
-   
-    setNotices([
-      {
-        title: "Semester Exam Starting",
-        date: "2026-04-10",
-        description: "Exams will start from 10 April. Prepare well.",
-        tag: "important",
-        formLink: "#"
-      },
-      {
-        title: "Hackathon Registration Open",
-        date: "2026-03-30",
-        description: "Register now and win exciting prizes.",
-        tag: "hot",
-        formLink: "#"
-      },
-      {
-        title: "Workshop on AI",
-        date: "2026-03-25",
-        description: "Ongoing AI workshop for students.",
-        tag: "normal"
-      }
-    ]);
-  }
-}, []);
+        setNotices(updated);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
-// SEARCH
-const filtered = notices.filter(n =>
-  n.title.toLowerCase().includes(search.toLowerCase())
-);
+  const filtered = notices.filter((n) =>
+    n.title.toLowerCase().includes(search.toLowerCase())
+  );
 
-return(
+  return (
+    <>
+      <div className="top-strip"></div>
 
-<>
-<div className="top-strip"></div>
+      <div className="notice-page">
 
-<div className="notice-page">
+        <h2 className="notice-heading">📢 Notices</h2>
 
-<h2 className="notice-heading">📢 Notices</h2>
+        <div className="notice-search">
+          <input
+            type="text"
+            placeholder="Search notices..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
 
-<div className="notice-search">
-<input
-type="text"
-placeholder="Search notices..."
-value={search}
-onChange={(e)=>setSearch(e.target.value)}
-/>
-</div>
+        <div className="trending-wrapper">
+          <h3 className="trending-title">🔥 Trending</h3>
+        </div>
 
-<div className="trending">
-<h3>🔥 Trending</h3>
+        <div className="notice-list">
+          {filtered.length > 0 ? (
+            filtered.map((notice, index) => (
+              <div key={index} className="notice-card">
 
-</div>
+                <div className="notice-header">
+                  <h3>{notice.title}</h3>
 
-<div className="notice-list">
+                  {notice.tag === "hot" && (
+                    <span className="tag hot">🔥 HOT</span>
+                  )}
+                  {notice.tag === "important" && (
+                    <span className="tag important">⭐ Important</span>
+                  )}
+                </div>
 
-{filtered.map((notice,index)=>(
+                <p className="date">
+                  📅 {new Date(notice.date).toDateString()}
+                </p>
 
-<div key={index} className="notice-card">
+                <p className="desc">
+                  {notice.description}
+                </p>
 
-<div className="notice-header">
-<h3>{notice.title}</h3>
+                {notice.formLink && (
+                  <a
+                    href={
+                      notice.formLink.startsWith("http")
+                        ? notice.formLink
+                        : `https://${notice.formLink}`
+                    }
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn"
+                  >
+                    Fill Form →
+                  </a>
+                )}
+              </div>
+            ))
+          ) : (
+            <p>No notices available</p>
+          )}
+        </div>
 
-{notice.tag === "hot" && <span className="tag hot">🔥 HOT</span>}
-{notice.tag === "important" && <span className="tag important">⭐ Important</span>}
-</div>
-
-<p className="date">
-📅 {new Date(notice.date).toDateString()}
-</p>
-
-<p className="desc">
-{notice.description || "No description available"}
-</p>
-
-{notice.formLink && (
-<a href={notice.formLink} className="btn">
-Fill Form →
-</a>
-)}
-
-</div>
-
-))}
-
-</div>
-
-</div>
-</>
-
-);
-
+      </div>
+    </>
+  );
 }
 
 export default Notices;

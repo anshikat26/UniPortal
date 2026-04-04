@@ -12,24 +12,49 @@ export default function AdminEvents() {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
 
-  useEffect(() => {
-    setEvents(JSON.parse(localStorage.getItem("events")) || []);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("events", JSON.stringify(events));
-  }, [events]);
-
-  const addEvent = () => {
-    if (!title || !date) return;
-
-    setEvents([...events, { id: Date.now(), title, date }]);
-    setTitle("");
-    setDate("");
+  // 🔥 FETCH EVENTS
+  const fetchEvents = () => {
+    fetch("http://localhost:5000/api/dashboard/events")
+      .then(res => res.json())
+      .then(data => setEvents(data))
+      .catch(err => console.log(err));
   };
 
-  const deleteEvent = (id) => {
-    setEvents(events.filter(e => e.id !== id));
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  // 🔥 ADD EVENT
+  const addEvent = async () => {
+    if (!title || !date) return;
+
+    try {
+      const res = await fetch("http://localhost:5000/api/dashboard/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ title, date })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message);
+        return;
+      }
+
+      alert("Event added ✅");
+
+      setTitle("");
+      setDate("");
+
+      fetchEvents(); // reload
+
+    } catch (err) {
+      console.log(err);
+      alert("Server error ❌");
+    }
   };
 
   return (
@@ -74,10 +99,10 @@ export default function AdminEvents() {
                   <h4>{e.title}</h4>
                   <p>{new Date(e.date).toDateString()}</p>
                 </div>
-                <button onClick={() => deleteEvent(e.id)}>❌</button>
               </div>
             ))
           )}
+
         </div>
 
       </div>

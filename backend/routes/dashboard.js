@@ -1,75 +1,84 @@
+console.log("🔥 DASHBOARD ROUTE LOADED");
+
 const express = require("express");
 const router = express.Router();
 
-// TEMP DATA
-let links = [];
-let news = [];
-let dates = [];
+// ================= STORAGE =================
+let messMenu = {
+  breakfast: [],
+  lunch: [],
+  snacks: [],
+  dinner: []
+};
 
-// TEST
-router.get("/test", (req, res) => {
-  res.send("Dashboard route working ✅");
+let messStatus = {
+  breakfast: "taken",
+  lunch: "available",
+  snacks: "not-started",
+  dinner: "upcoming"
+};
+
+let messNotices = [];
+
+// ================= GET =================
+
+// MENU
+router.get("/mess/menu", (req, res) => {
+  res.json(messMenu);
 });
 
-// GET
-router.get("/links", (req, res) => {
-  console.log("GET LINKS HIT");
-  res.json(links);
+// STATUS
+router.get("/mess/status", (req, res) => {
+  res.json(messStatus);
 });
 
-router.get("/news", (req, res) => {
-  res.json(news);
+// NOTICES
+router.get("/mess/notices", (req, res) => {
+  res.json(messNotices);
 });
 
-router.get("/dates", (req, res) => {
-  res.json(dates);
-});
+// ================= POST =================
 
-// POST LINKS
-router.post("/links", (req, res) => {
-  console.log("POST /links HIT");
+// ADD MENU ITEM
+router.post("/mess/menu", (req, res) => {
+  const { type, value } = req.body;
 
-  try {
-    console.log("BODY:", req.body);
-
-    const { value } = req.body;
-
-    if (!value) {
-      return res.status(400).json({ message: "Value missing ❌" });
-    }
-
-    links.push(value);
-
-    console.log("SAVED LINKS:", links);
-
-    res.json({ message: "Link added ✅" });
-
-  } catch (err) {
-    console.log("ERROR:", err);
-    res.status(500).json({ message: "Server error ❌" });
+  if (!type || !value) {
+    return res.status(400).json({ message: "Missing ❌" });
   }
+
+  messMenu[type].push(value);
+  res.json({ message: "Added ✅" });
 });
 
-// POST NEWS
-router.post("/news", (req, res) => {
-  try {
-    const { value } = req.body;
-    news.push(value);
-    res.json({ message: "News added ✅" });
-  } catch (err) {
-    res.status(500).json({ message: "Server error ❌" });
-  }
+// DELETE MENU
+router.delete("/mess/menu", (req, res) => {
+  const { type, index } = req.body;
+
+  messMenu[type].splice(index, 1);
+  res.json({ message: "Deleted ✅" });
 });
 
-// POST DATES
-router.post("/dates", (req, res) => {
-  try {
-    const { value } = req.body;
-    dates.push(value);
-    res.json({ message: "Date added ✅" });
-  } catch (err) {
-    res.status(500).json({ message: "Server error ❌" });
-  }
+// UPDATE STATUS
+router.post("/mess/status", (req, res) => {
+  messStatus = req.body;
+  res.json({ message: "Updated ✅" });
+});
+
+// ADD NOTICE
+router.post("/mess/notices", (req, res) => {
+  const { text } = req.body;
+
+  if (!text) return res.status(400).json({ message: "Empty ❌" });
+
+  messNotices.push(text);
+  res.json({ message: "Added ✅" });
+});
+
+// DELETE NOTICE
+router.delete("/mess/notices/:index", (req, res) => {
+  messNotices.splice(req.params.index, 1);
+  res.json({ message: "Deleted ✅" });
 });
 
 module.exports = router;

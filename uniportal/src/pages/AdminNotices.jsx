@@ -1,53 +1,60 @@
 import "./AdminNotices.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AdminNavbar from "../components/AdminNavbar";
 import AdminSidebar from "../components/AdminSidebar";
 
 export default function AdminNotices() {
 
   const [isOpen, setIsOpen] = useState(false);
-  const toggleSidebar = () => setIsOpen(!isOpen);
 
-  const [events, setEvents] = useState([]);
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [formLink, setFormLink] = useState("");
 
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("events")) || [];
-    setEvents(saved);
-  }, []);
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
-  const addEvent = () => {
-    if (!title || !date) return;
+  // 🔥 ADD NOTICE (API)
+  const addEvent = async () => {
 
-    const newEvent = {
-      id: Date.now(),
-      title,
-      date,
-      description,
-      formLink
-    };
+    if (!title || !date || !description) {
+      alert("Fill all required fields ❌");
+      return;
+    }
 
-    const oldData = JSON.parse(localStorage.getItem("events")) || [];
-    const updatedData = [...oldData, newEvent];
+    try {
+      const res = await fetch("http://localhost:5000/api/dashboard/notices", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          title,
+          date,
+          description,
+          formLink
+        })
+      });
 
-    localStorage.setItem("events", JSON.stringify(updatedData));
-    setEvents(updatedData);
+      const data = await res.json();
 
-    setTitle("");
-    setDate("");
-    setDescription("");
-    setFormLink("");
-  };
+      if (!res.ok) {
+        alert(data.message);
+        return;
+      }
 
-  const deleteEvent = (id) => {
-    const oldData = JSON.parse(localStorage.getItem("events")) || [];
-    const updatedData = oldData.filter(event => event.id !== id);
+      alert("Notice added ✅");
 
-    localStorage.setItem("events", JSON.stringify(updatedData));
-    setEvents(updatedData);
+      // reset
+      setTitle("");
+      setDate("");
+      setDescription("");
+      setFormLink("");
+
+    } catch (err) {
+      console.log(err);
+      alert("Server error ❌");
+    }
   };
 
   return (
@@ -93,34 +100,6 @@ export default function AdminNotices() {
           />
 
           <button onClick={addEvent}>Add Notice</button>
-        </div>
-
-        <div className="admin-card">
-          <h3>All Notices</h3>
-
-          <ul>
-            {events.map(event => (
-              <li key={event.id}>
-                <b>{event.title}</b> - {event.date} <br />
-                <small>{event.description}</small> <br />
-
-                {event.formLink && (
-                  <a href={event.formLink} target="_blank" rel="noreferrer">
-                    🔗 View Form
-                  </a>
-                )}
-
-                <br />
-
-                <button
-                  className="delete-btn"
-                  onClick={() => deleteEvent(event.id)}
-                >
-                  ❌ Delete
-                </button>
-              </li>
-            ))}
-          </ul>
         </div>
 
       </div>

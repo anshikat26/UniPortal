@@ -150,7 +150,18 @@ return(
      <h3><FiLink /> Useful Links</h3>
       <ul className="card-list">
         {links.length > 0 ? (
-          links.map((item, i) => <li key={i}>{item}</li>)
+          links.map((item, i) => (
+  <li key={i}>
+    <a 
+      href={item.startsWith("http") ? item : `https://${item}`} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      style={{ color: "#4facfe", textDecoration: "none" }}
+    >
+      🔗 {item}
+    </a>
+  </li>
+))
         ) : (
           <li>No links available</li>
         )}
