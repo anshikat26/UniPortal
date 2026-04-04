@@ -4,13 +4,11 @@
   margin: auto;
 }
 
-/* HEADER */
 .mess-header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* MENU CARD */
 .menu-card {
   background: white;
   padding: 20px;
@@ -30,7 +28,6 @@
 .snacks { background: #fb923c; }
 .dinner { background: #60a5fa; }
 
-/* STATUS */
 .status-grid{
   display:flex;
   gap:15px;
@@ -38,7 +35,6 @@
   margin-top:20px;
 }
 
-/* COMMON CARD */
 .status-card{
   flex:1;
   padding:18px;
@@ -49,7 +45,6 @@
   transition:0.3s;
 }
 
-/* TEXT STYLE */
 .status-card span{
   display:block;
   margin-top:5px;
@@ -62,7 +57,6 @@
   box-shadow: 0 4px 12px rgba(0, 200, 83, 0.4);
 }
 
-/* HOVER EFFECT */
 .status-card:hover{
   transform: translateY(-5px);
 }
@@ -78,7 +72,6 @@
 .blue{
   background:#90caf9;
 }
-/* BALANCE */
 .balance-card {
   background: linear-gradient(90deg,#3b82f6,#2563eb);
   color: white;
@@ -87,7 +80,6 @@
   margin-bottom: 20px;
 }
 
-/* ACTIONS */
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -104,7 +96,6 @@
   cursor: pointer;
 }
 
-/* NOTICES */
 .mess-notices {
   background: white;
   padding: 15px;
@@ -116,7 +107,6 @@
   border-bottom: 1px solid #ddd;
 }
 
-/* 🌙 DARK MODE */
 body.dark .menu-card,
 body.dark .mess-notices {
   background: #1e1e2f;
@@ -131,7 +121,6 @@ body.dark .actions button {
   background: #2b2b40;
   color: white;
 }
-/* ✨ CARD ANIMATION */
 .menu-card,
 .balance-card,
 .status-card,
@@ -144,13 +133,9 @@ body.dark .actions button {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
-
-/* 🔥 STATUS HOVER */
 .status-card:hover {
   transform: scale(1.05);
 }
-
-/* ✨ BUTTON ANIMATION */
 .actions button {
   transition: 0.3s;
 }
@@ -161,25 +146,21 @@ body.dark .actions button {
   transform: scale(1.05);
 }
 
-/* FORCE LUNCH CARD FIX */
 .status-card.green{
   background: linear-gradient(135deg, #00c853, #64dd17) !important;
   color: white !important;
   box-shadow: 0 4px 15px rgba(0, 200, 83, 0.5);
 }
 
-/* TEXT FIX */
 .status-card.green span{
   color: white !important;
   font-weight: bold;
 }
-/* ✨ MENU ITEMS GLOW */
 .menu-item:hover {
   transform: scale(1.02);
   opacity: 0.9;
 }
 
-/* ✨ NOTICE HOVER */
 .notice:hover {
   background: #f3f3f3;
 }
@@ -193,22 +174,18 @@ body.dark .notice:hover {
     padding:80px 10px;
   }
 
-  /* STATUS → 2 column */
   .status-grid{
     grid-template-columns: repeat(2,1fr);
   }
 
-  /* MENU TEXT SMALL */
   .menu-item{
     font-size:14px;
   }
 
-  /* BALANCE */
   .balance-card h3{
     font-size:18px;
   }
 
-  /* BUTTON FULL WIDTH */
   .actions{
     flex-direction:column;
   }
@@ -223,22 +200,18 @@ body.dark .notice:hover {
     padding:80px 10px;
   }
 
-  /* STATUS → 2 column */
   .status-grid{
     grid-template-columns: repeat(2,1fr);
   }
 
-  /* MENU TEXT SMALL */
   .menu-item{
     font-size:14px;
   }
 
-  /* BALANCE */
   .balance-card h3{
     font-size:18px;
   }
 
-  /* BUTTON FULL WIDTH */
   .actions{
     flex-direction:column;
   }

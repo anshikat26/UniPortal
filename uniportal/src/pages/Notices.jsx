@@ -58,7 +58,6 @@ return(
 
 <h2 className="notice-heading">📢 Notices</h2>
 
-{/* SEARCH */}
 <div className="notice-search">
 <input
 type="text"
@@ -68,13 +67,11 @@ onChange={(e)=>setSearch(e.target.value)}
 />
 </div>
 
-{/*  TRENDING SECTION */}
 <div className="trending">
 <h3>🔥 Trending</h3>
 
 </div>
 
-{/* LIST */}
 <div className="notice-list">
 
 {filtered.map((notice,index)=>(
@@ -84,7 +81,6 @@ onChange={(e)=>setSearch(e.target.value)}
 <div className="notice-header">
 <h3>{notice.title}</h3>
 
-{/* TAGS */}
 {notice.tag === "hot" && <span className="tag hot">🔥 HOT</span>}
 {notice.tag === "important" && <span className="tag important">⭐ Important</span>}
 </div>
@@ -97,7 +93,6 @@ onChange={(e)=>setSearch(e.target.value)}
 {notice.description || "No description available"}
 </p>
 
-{/* BUTTON */}
 {notice.formLink && (
 <a href={notice.formLink} className="btn">
 Fill Form →

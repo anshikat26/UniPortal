@@ -1,0 +1,223 @@
+
+.admin-mess {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.admin-mess .admin-card,
+.admin-mess .welcome-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 25px 0;
+}
+
+.admin-mess .welcome-card {
+  padding: 22px 30px;  
+  border-radius: 18px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  text-align: center;
+
+  min-height: 110px;  
+}
+
+.admin-mess .welcome-card h1,
+.admin-mess .welcome-card h2 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.admin-mess .welcome-card p {
+  font-size: 16px;
+}
+
+.admin-mess .admin-card {
+  padding: 25px;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+body.dark .admin-mess .admin-card {
+  background: #1e293b;
+  color: white;
+}
+
+.admin-mess .menu-block {
+  margin-bottom: 15px;
+}
+
+.admin-mess .menu-row {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.admin-mess .menu-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+body:not(.dark) .admin-mess .menu-row input {
+  background: #ffffff;
+  color: black;
+}
+
+body.dark .admin-mess .menu-row input {
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+}
+
+.admin-mess button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+}
+
+.admin-mess .menu-row button {
+  width: 110px;
+}
+
+.admin-mess .menu-list {
+  margin-top: 8px;
+}
+
+.admin-mess .menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  background: #e2e8f0;
+  color: black;
+}
+
+body.dark .admin-mess .menu-item {
+  background: #0f172a;
+  color: white;
+}
+
+.admin-mess .menu-item span {
+  cursor: pointer;
+}
+
+.admin-mess .status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.admin-mess .status-row label {
+  text-transform: capitalize;
+}
+
+.admin-mess .status-row select {
+  width: 170px;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.admin-mess .notice-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-mess .notice-row input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+body.dark .admin-mess .notice-row input {
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+}
+
+@media (max-width: 768px) {
+
+  .admin-mess .menu-row,
+  .admin-mess .notice-row {
+    flex-direction: column;
+  }
+
+  .admin-mess button {
+    width: 100%;
+  }
+
+  .admin-mess .status-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+.menu-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-btn span {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+
+  .admin-mess .admin-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .admin-mess .notice-row {
+    width: 100%;
+  }
+
+  .admin-mess .notice-row input {
+    width: 100%;
+  }
+
+  .admin-mess .notice-row button {
+    width: 100%;
+  }
+}
+
+.admin-mess .admin-card.full {
+  width: 100%;
+  max-width: 100%;
+}
+
+.admin-mess .menu-block {
+  display: block;
+}
+
+.admin-mess .menu-block input {
+  width: 100%;
+}
+
+.admin-mess .menu-block button {
+  min-width: 90px;
+}
+
+@media (max-width: 768px) {
+  .admin-mess .menu-block {
+    display: block;
+  }
+
+  .admin-mess .menu-block button {
+    width: 100%;
+  }
+}

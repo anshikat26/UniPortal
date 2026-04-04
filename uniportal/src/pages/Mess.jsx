@@ -57,18 +57,15 @@ function Mess() {
 
   return (
     <>
-      {/* 🔥 TOP PURPLE STRIP */}
       <div className="top-strip"></div>
 
       <div className="mess-page">
 
-        {/* HEADER */}
         <div className="mess-header">
           <h2>Mess Dashboard</h2>
           <p>Central Mess – Block A ▼</p>
         </div>
 
-        {/* WEEKLY MENU */}
         <div className="weekly-menu">
           {Object.keys(messData).map((day)=>(
             <div
@@ -81,7 +78,6 @@ function Mess() {
           ))}
         </div>
 
-        {/* MENU CARD */}
         <div
           className="menu-card"
           onTouchStart={handleTouchStart}
@@ -111,7 +107,6 @@ function Mess() {
 
         </div>
 
-        {/* STATUS */}
         <div className="status-grid">
 
   <div className="status-card yellow">
@@ -133,13 +128,11 @@ function Mess() {
 </div>
         
 
-        {/* BALANCE */}
         <div className="balance-card">
           💳 Mess Balance  
           <h3>₹ 2,350 Remaining</h3>
         </div>
 
-        {/* ACTION BUTTONS */}
         <div className="actions">
 
           <button onClick={()=>setActiveModal("weekly")}>
@@ -164,7 +157,6 @@ function Mess() {
 
         </div>
 
-        {/* 🔥 MODAL */}
         {activeModal && (
           <div className="modal-overlay">
             <div className="modal">
@@ -208,7 +200,6 @@ function Mess() {
           </div>
         )}
 
-        {/* NOTICES */}
       <div className="mess-notices">
   <h3>Notices</h3>
 
@@ -221,7 +212,6 @@ function Mess() {
   </div>
 </div>
 
-        {/* LEAVE MEAL MODAL */}
         {leaveMeal && (
           <div className="modal-overlay">
             <div className="modal">

@@ -1,4 +1,4 @@
-/* RESET */
+
 
 body{
   margin:0;
@@ -14,7 +14,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#0b1120; /* dark theme */
+  background:#0b1120; 
   padding:20px;
 }
 .auth-card{
@@ -63,7 +63,7 @@ margin-top:12px;
 }
 
 .remember-text {
-  color: #333; /* light mode */
+  color: #333;
 }
 
 /*dark mode */
@@ -99,7 +99,7 @@ font-weight:500;
 }
 .auth-card{
   width:100%;
-  max-width:420px;   /* laptop par center card */
+  max-width:420px;  
   background:#111827;
   padding:30px 25px;
   border-radius:20px;

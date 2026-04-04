@@ -5,19 +5,17 @@ function AcademicCalender(){
 
 const [docs,setDocs] = useState([]);
 
-// 🔥 LOAD ADMIN DOCS
 useEffect(()=>{
   const saved = JSON.parse(localStorage.getItem("docs")) || [];
   setDocs(saved);
 },[]);
 
-// 🔥 FIND FUNCTION (name match karega)
+
 const getLink = (type) => {
   const doc = docs.find(d => d.type === type);
   return doc ? doc.link : null;
 };
 
-// 🔥 CLICK HANDLER
 const openDoc = (keyword) => {
   const link = getLink(keyword);
   if(link){
@@ -35,12 +33,11 @@ return(
   <h2 className="center-title">📅 Academic Calendar</h2>
 </div>
 
-{/* SEARCH */}
+
 <div className="search-box">
   <input placeholder="Search academic documents..." />
 </div>
 
-{/* DOCUMENTS */}
 <div className="section">
 
 <h3>📂 Academic Documents</h3>
@@ -71,7 +68,7 @@ return(
 
 </div>
 
-{/* IMPORTANT DATES */}
+
 <div className="section">
 
 <h3>📌 Important Dates</h3>
@@ -86,7 +83,6 @@ return(
 
 </div>
 
-{/* DOWNLOAD BUTTON */}
 <div className="section">
 
 <h3>⬇ Download Full Calendar</h3>

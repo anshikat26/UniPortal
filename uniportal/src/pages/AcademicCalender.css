@@ -4,7 +4,7 @@
   min-height:100vh;
 }
 
-/* HEADER */
+
 .academic-header{
   position: relative;
   z-index: 10;
@@ -20,7 +20,7 @@
   cursor:pointer;
 }
 
-/* SEARCH */
+
 .search-box input{
   width:100%;
   padding:12px;
@@ -30,7 +30,7 @@
   margin-bottom:20px;
 }
 
-/* SECTION */
+
 .section{
   background:white;
   padding:15px;
@@ -38,14 +38,14 @@
   margin-bottom:20px;
 }
 
-/* GRID */
+
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
 
-/* CARD */
+
 .card{
   background:#eef2f7;
   padding:12px;
@@ -53,7 +53,7 @@
   font-size:14px;
 }
 
-/* LIST */
+
 .list{
   padding-left:15px;
 }
@@ -62,7 +62,7 @@
   margin-bottom:8px;
 }
 
-/* BUTTON */
+
 .download-btn{
   width:100%;
   padding:12px;
@@ -74,23 +74,23 @@
   cursor:pointer;
 }
 
-/* RESPONSIVE */
+
 @media(max-width:600px){
   .grid{
     grid-template-columns:1fr;
   }
 }
-/* DARK MODE BASE */
+
 body.dark .academic-page{
   background: #0f172a;
 }
 
-/* HEADER */
+
 body.dark .academic-header h2{
   color: #f1f5f9;
 }
 
-/* SEARCH BOX */
+
 body.dark .search-box input{
   background: #1e293b;
   color: white;
@@ -100,28 +100,26 @@ body.dark .search-box input::placeholder{
   color: #94a3b8;
 }
 
-/* SECTION CARD */
+
 body.dark .section{
   background: #1e293b;
 }
 
-/* CARDS */
+
 body.dark .card{
   background: #334155;
   color: #e2e8f0;
 }
 
-/* TEXT INSIDE */
 body.dark .card small{
   color: #94a3b8;
 }
 
-/* LIST */
+
 body.dark .list li{
   color: #e2e8f0;
 }
 
-/* BUTTON */
 body.dark .download-btn{
   background: #6366f1;
 }

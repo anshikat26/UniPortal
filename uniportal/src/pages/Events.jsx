@@ -6,13 +6,11 @@ const [filter,setFilter] = useState("all");
 const [search,setSearch] = useState("");
 const [liked,setLiked] = useState([]);
 
-// 🔥 ADMIN DATA LOAD
 const [events,setEvents] = useState([]);
 
 useEffect(()=>{
   const saved = JSON.parse(localStorage.getItem("events")) || [];
 
-  // 🔥 type auto set (important for filter)
   const today = new Date();
 
   const updated = saved.map(event => {
@@ -27,7 +25,6 @@ useEffect(()=>{
   setEvents(updated);
 },[]);
 
-// ❤️ LIKE
 const toggleLike = (index)=>{
   if(liked.includes(index)){
     setLiked(liked.filter(i=>i!==index));
@@ -36,7 +33,6 @@ const toggleLike = (index)=>{
   }
 };
 
-// 🔍 FILTER
 const filteredEvents = events.filter(event => {
   const matchFilter = filter === "all" || event.type === filter;
   const matchSearch = event.title.toLowerCase().includes(search.toLowerCase());
@@ -49,7 +45,6 @@ return(
 
 <h2 className="events-heading">🎉 Events</h2>
 
-{/* SEARCH */}
 <div className="events-search">
 <input
 type="text"
@@ -59,7 +54,6 @@ onChange={(e)=>setSearch(e.target.value)}
 />
 </div>
 
-{/* TRENDING */}
 <div className="trending">
 <h3>🔥 Trending</h3>
 <div className="trending-row">
@@ -69,25 +63,21 @@ onChange={(e)=>setSearch(e.target.value)}
 </div>
 </div>
 
-{/* FILTER */}
 <div className="events-filter">
 <button onClick={()=>setFilter("all")}>All</button>
 <button className="chip green" onClick={()=>setFilter("upcoming")}>Upcoming</button>
 <button className="chip grey" onClick={()=>setFilter("past")}>Past</button>
 </div>
 
-{/* EVENTS */}
 <div className="events-grid">
 
 {filteredEvents.map((event,index)=>(
 <div key={index} className={`event-card ${event.type}`}>
 
-{/* LIKE */}
 <span className="like-btn" onClick={()=>toggleLike(index)}>
 {liked.includes(index) ? "❤️" : "🤍"}
 </span>
 
-{/* STATUS */}
 <span className={`status ${event.status.toLowerCase()}`}>
 {event.status}
 </span>
@@ -95,7 +85,6 @@ onChange={(e)=>setSearch(e.target.value)}
 <h3>{event.title}</h3>
 <p>{new Date(event.date).toDateString()}</p>
 
-{/* 🔥 MAIN FIX (REGISTER WORKING) */}
 {event.formLink ? (
   <a href={event.formLink} target="_blank" rel="noreferrer">
     <button className="view-btn">Register</button>

@@ -1,0 +1,103 @@
+
+.admin-notice-page {
+  position: absolute;
+  left: 220px;
+  right: 0;
+  top: 70px;
+
+  padding: 30px;
+  background: #f4f6f9;
+  min-height: calc(100vh - 70px);
+  box-sizing: border-box;
+}
+
+.admin-notice-page .welcome-card {
+  padding: 40px 30px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  margin-bottom: 25px;
+}
+
+.admin-notice-page .admin-card {
+  padding: 25px;
+  border-radius: 16px;
+  background: white;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.admin-notice-page input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.admin-notice-page button {
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-notice-page .delete-btn {
+  margin-top: 10px;
+  background: #ef4444;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.admin-notice-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-notice-page li {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.admin-notice-page a {
+  color: #2563eb;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .admin-notice-page {
+    position: relative;
+    left: 0;
+    top: 0;
+    padding: 20px;
+  }
+}
+
+body.dark .admin-notice-page {
+  background: #020617;
+}
+
+body.dark .admin-notice-page .welcome-card {
+  background: linear-gradient(135deg, #4c1d95, #1d4ed8);
+}
+
+body.dark .admin-notice-page .admin-card {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark .admin-notice-page li {
+  background: #020617;
+  border: 1px solid #334155;
+}
+
+body.dark .admin-notice-page input {
+  background: #020617;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+}

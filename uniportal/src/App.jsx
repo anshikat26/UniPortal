@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";   // 🔥 useState add
 
-// ===== USER PAGES =====
+// USER PAGES 
 import RoleSelect from "./pages/RoleSelect";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -16,20 +16,20 @@ import LabDetails from "./pages/LabDetails";
 import AcademicCalender from "./pages/AcademicCalender";
 import Emergency from "./pages/Emergency";
 
-// ===== ADMIN PAGES =====
+// ADMIN PAGES 
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminForgotPassword from "./pages/AdminForgotPassword";
 import AdminCreateAccount from "./pages/AdminCreateAccount";
-/*import AdminEvents from "./pages/AdminEvents";
+import AdminEvents from "./pages/AdminEvents";
 import AdminNotices from "./pages/AdminNotices";
 import AdminMess from "./pages/AdminMess";
 import AdminBus from "./pages/AdminBus";
 import AdminLab from "./pages/AdminLab";
 import AdminCalendar from "./pages/AdminCalendar";
-import AdminHelp from "./pages/AdminHelp";*/
+import AdminHelp from "./pages/AdminHelp";
 
-// ===== ADMIN LAYOUT =====
+//ADMIN LAYOUT 
 import AdminNavbar from "./components/AdminNavbar";
 import AdminSidebar from "./components/AdminSidebar";
 
@@ -47,25 +47,24 @@ function ThemeHandler() {
   return null;
 }
 
-/* 🔥 ADMIN LAYOUT WRAPPER (FINAL FIXED) */
 function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="admin-wrapper">
 
-      {/* NAVBAR */}
+     
       <AdminNavbar toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="app-layout">
 
-        {/* SIDEBAR */}
+       
         <AdminSidebar
           isOpen={sidebarOpen}
           closeSidebar={() => setSidebarOpen(false)}
         />
 
-        {/* CONTENT */}
+        
         <div className="main-content">
           {children}
         </div>
@@ -83,10 +82,10 @@ function App() {
 
       <Routes>
 
-        {/* ===== FIRST PAGE ===== */}
+        
         <Route path="/" element={<RoleSelect />} />
 
-        {/* ===== USER ROUTES ===== */}
+      
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -101,19 +100,45 @@ function App() {
         <Route path="/academic" element={<AcademicCalender />} />
         <Route path="/emergency" element={<Emergency />} />
 
-        {/* ===== ADMIN AUTH ===== */}
+       
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-forgot" element={<AdminForgotPassword />} />
         <Route path="/admin-create" element={<AdminCreateAccount />} />
 
-        {/* ===== ADMIN PAGES WITH LAYOUT ===== */}
+       
         <Route path="/admin-dashboard" element={
           <AdminLayout><AdminDashboard /></AdminLayout>
         } />
 
-       
+        <Route path="/admin/events" element={
+          <AdminLayout><AdminEvents /></AdminLayout>
+        } />
 
-      </Routes> 
+        <Route path="/admin/notices" element={
+          <AdminLayout><AdminNotices /></AdminLayout>
+        } />
+
+        <Route path="/admin/mess" element={
+          <AdminLayout><AdminMess /></AdminLayout>
+        } />
+
+        <Route path="/admin/bus" element={
+          <AdminLayout><AdminBus /></AdminLayout>
+        } />
+
+        <Route path="/admin/lab" element={
+          <AdminLayout><AdminLab /></AdminLayout>
+        } />
+
+        <Route path="/admin/calendar" element={
+          <AdminLayout><AdminCalendar /></AdminLayout>
+        } />
+
+        <Route path="/admin/help" element={
+          <AdminLayout><AdminHelp /></AdminLayout>
+        } />
+
+      </Routes>
     </BrowserRouter>
   );
 }

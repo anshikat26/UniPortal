@@ -32,12 +32,10 @@ return (
       </div>
     </div>
 
-    {/* DATE */}
     <div className="lab-date">
       📅 April 25, 2024
     </div>
 
-    {/* TABS */}
     <div className="lab-tabs">
 
 <button
@@ -70,19 +68,16 @@ return (
 
 </div>
 
-    {/* LAB CARDS */}
     {filteredLabs.map((lab)=>(
   <div 
     key={lab.id} 
     className={`lab-card ${lab.status === "available" ? "green" : "red"}`}
   >
 
-    {/* TOP */}
     <div className="lab-top">
       {lab.name}
     </div>
 
-    {/* BOTTOM */}
     <div className="lab-bottom">
 
       {lab.status === "available" ? (
@@ -93,7 +88,6 @@ return (
         </span>
       )}
 
-      {/* ✅ FIX: popup instead of navigate */}
       <button onClick={()=>setSelectedLab(lab)}>
         See Details
       </button>
@@ -103,7 +97,6 @@ return (
   </div>
 ))}
 
-    {/* ✅ MODAL */}
     {selectedLab && (
       <div className="modal-overlay" onClick={()=>setSelectedLab(null)}>
 
@@ -125,8 +118,6 @@ return (
 
       </div>
     )}
-
-    {/* NOTICE */}
     <div className="notice">
       <h3>• Notices</h3>
 

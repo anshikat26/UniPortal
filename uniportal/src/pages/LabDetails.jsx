@@ -21,7 +21,6 @@ function LabDetails() {
   return (
     <div className="details-page">
 
-      {/* HEADER */}
       <div className="details-header">
         <button onClick={()=>navigate("/lab")} className="back-btn">
           ← Back
@@ -30,7 +29,6 @@ function LabDetails() {
         <h1>{lab.name}</h1>
       </div>
 
-      {/* CARD */}
       <div className="details-card">
 
         <div className="details-row">

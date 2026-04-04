@@ -11,12 +11,10 @@ return(
 
 <div className="bus-page">
 
-{/* HEADER */}
 <div className="bus-header">
 <h2>🚌 Bus Services</h2>
 </div>
 
-{/* TOP CARDS */}
 <div className="bus-top">
 
 <div className="bus-card purple">
@@ -32,13 +30,11 @@ return(
 
 </div>
 
-{/* TOGGLE */}
 <div className="bus-toggle">
 <button className="active">CITY</button>
 <button>STATION</button>
 </div>
 
-{/* LIST */}
 <div className="bus-list">
 
 {[
@@ -64,7 +60,6 @@ return(
 
 </div>
 
-{/* ACTIONS */}
 <div className="bus-actions">
 
 <button onClick={()=>setActiveModal("live")}>📍 Live Tracking</button>
@@ -74,7 +69,6 @@ return(
 
 </div>
 
-{/* MODAL */}
 {activeModal && (
 <div className="modal-overlay">
 <div className="modal">
@@ -113,7 +107,6 @@ return(
 </div>
 )}
 
-{/* NOTICES */}
 <div className="bus-notices">
 <h3>Notices</h3>
 

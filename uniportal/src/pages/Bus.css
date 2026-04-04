@@ -1,15 +1,13 @@
-/* ================= PAGE ================= */
+
 .bus-page{
   padding:90px 15px;
 }
 
-/* ================= HEADER ================= */
 .bus-header{
   text-align:center;
   margin-bottom:20px;
 }
 
-/* ================= TOP CARDS ================= */
 .bus-top{
   display:flex;
   gap:15px;
@@ -25,7 +23,6 @@
   overflow:hidden;
 }
 
-/* COLORS */
 .bus-card:first-child{
   background:linear-gradient(135deg,#7b3fe4,#a76bff);
 }
@@ -34,7 +31,6 @@
   background:linear-gradient(135deg,#2563eb,#3b82f6);
 }
 
-/* GLOW */
 .bus-card::before{
   content:"";
   position:absolute;
@@ -55,7 +51,6 @@
   transform:translateY(-5px);
 }
 
-/* ================= TOGGLE ================= */
 .bus-toggle{
   display:flex;
   justify-content:center;
@@ -76,18 +71,16 @@
   color:white;
 }
 
-/* ================= LIST ================= */
 .bus-list{
-  gap:8px;   /* 🔥 pehle 12px */
+  gap:8px;  
 }
-/* ================= ROW ================= */
 .bus-row{
   display:grid;
   grid-template-columns: 1fr auto;
   align-items:center;
 
-  padding:12px 15px;   /* 🔥 pehle 18px tha → ab compact */
-  border-radius:14px;  /* thoda subtle */
+  padding:12px 15px;  
+  border-radius:14px; 
 
   background:linear-gradient(135deg,#ffffff,#f3f4f6);
   box-shadow:0 6px 15px rgba(0,0,0,0.08);
@@ -99,24 +92,23 @@
   transform:translateY(-2px);
 }
 
-/* LEFT */
+
 .bus-left{
   display:flex;
   flex-direction:column;
   gap:3px;
-  overflow:hidden;   /* 🔥 text overflow fix */
+  overflow:hidden;  
 }
 .bus-left h3{
-  font-size:16px;   /* 🔥 pehle 18px */
+  font-size:16px;   
 }
 
 .bus-left p{
   font-size:12px;
 }
 
-/* ================= STATUS ================= */
 .status{
-  padding:4px 10px;   /* 🔥 small badge */
+  padding:4px 10px;  
   font-size:11px;
   border-radius:15px;
 }
@@ -136,7 +128,6 @@
   color:#374151;
 }
 
-/* LEFT STRIP */
 .bus-row::before{
   content:"";
   position:absolute;
@@ -148,7 +139,6 @@
   background:linear-gradient(#7b3fe4,#a76bff);
 }
 
-/* ANIMATION */
 .pulse{
   animation:pulse 1.5s infinite;
 }
@@ -159,7 +149,6 @@
   100%{transform:scale(1);}
 }
 
-/* ================= ACTIONS ================= */
 .bus-actions{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -180,7 +169,6 @@
   transform:translateY(-3px);
 }
 
-/* ================= NOTICE ================= */
 .bus-notices{
   margin-top:20px;
 }
@@ -193,7 +181,6 @@
   box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* ================= DARK MODE ================= */
 body.dark .bus-row{
   background:linear-gradient(135deg,#1e1e2f,#2b2b40);
   color:white;

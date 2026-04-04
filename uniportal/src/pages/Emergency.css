@@ -9,7 +9,6 @@
   margin-bottom:20px;
 }
 
-/* SOS */
 .sos-box{
   text-align:center;
   margin-bottom:20px;
@@ -30,7 +29,6 @@
   box-shadow:0 10px 30px rgba(255,0,0,0.4);
 }
 
-/* PULSE */
 .pulse{
   animation:pulse 1.5s infinite;
 }
@@ -41,7 +39,6 @@
   100%{ transform:scale(1);}
 }
 
-/* CONTACTS */
 .contact-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -61,7 +58,6 @@
   transform:scale(1.05);
 }
 
-/* SECTION */
 .section{
   background:white;
   padding:15px;
@@ -69,7 +65,6 @@
   border-radius:12px;
 }
 
-/* BUTTON */
 .report-btn{
   background:red;
   color:white;
@@ -81,21 +76,18 @@
   width:100%;
 }
 
-/* SERVICES */
 .service{
   padding:12px;
   border-bottom:1px solid #ddd;
   cursor:pointer;
 }
 
-/* MOBILE */
 @media(max-width:600px){
   .contact-grid{
     grid-template-columns:1fr;
   }
 }
 
-/* DARK MODE */
 body.dark .emergency-page{
   background:#0f172a;
 }

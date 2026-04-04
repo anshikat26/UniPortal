@@ -2,7 +2,7 @@ import "./Emergency.css";
 
 function Emergency(){
 
-// 📍 LOCATION + ALERT
+
 const handleSOS = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((pos)=>{
@@ -13,7 +13,6 @@ const handleSOS = () => {
   }
 };
 
-// 📞 CALL FUNCTION
 const callNumber = (num) => {
   window.location.href = `tel:${num}`;
 };
@@ -24,7 +23,6 @@ return(
 
 <h2 className="em-title">🚨 Emergency & Help</h2>
 
-{/* SOS */}
 <div className="sos-box">
   <div className="sos-btn pulse" onClick={handleSOS}>
     SOS
@@ -32,7 +30,6 @@ return(
   <p>Tap SOS to share your location instantly</p>
 </div>
 
-{/* CONTACTS */}
 <h3>Important Contacts</h3>
 
 <div className="contact-grid">
@@ -59,7 +56,6 @@ return(
 
 </div>
 
-{/* RAGGING */}
 <div className="section">
 <h3>Anti-Ragging Help</h3>
 
@@ -70,7 +66,6 @@ return(
 </button>
 </div>
 
-{/* EMERGENCY */}
 <div className="section">
 <h3>Emergency Services</h3>
 
