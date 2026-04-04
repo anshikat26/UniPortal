@@ -1,0 +1,107 @@
+.admin-dashboard {
+  width: 100%;
+}
+
+
+.admin-dashboard .welcome-card {
+  width: 100%;
+  padding: 28px 45px;   /* 🔥 balanced padding */
+  border-radius: 20px;
+  margin-bottom: 30px;
+
+  background: linear-gradient(135deg, #5f72bd, #9b23ea);
+  color: white;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+  display: flex;
+  align-items: center;
+
+  min-height: 120px;  
+}
+
+
+.admin-dashboard .welcome-card h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.admin-dashboard .welcome-card p {
+  font-size: 15px;
+  margin: 3px 0;
+}
+
+
+.admin-dashboard .cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.admin-dashboard .card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 14px;
+}
+
+
+.admin-dashboard .card.full {
+  grid-column: span 2;
+}
+
+
+.admin-dashboard ul {
+  margin-top: 10px;
+  padding-left: 15px;
+}
+
+.admin-dashboard li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+
+.admin-dashboard li button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: red;
+}
+
+
+.admin-dashboard .input-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.admin-dashboard input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
+.admin-dashboard button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .admin-dashboard .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard .card.full {
+    grid-column: span 1;
+  }
+}

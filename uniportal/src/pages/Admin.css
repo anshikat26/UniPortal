@@ -1,0 +1,90 @@
+
+.admin-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(to right, #e0e7ff, #dbeafe, #cffafe);
+
+  padding: 20px;  
+  box-sizing: border-box;
+}
+
+.admin-auth-card {
+  width: 100%;
+  max-width: 420px; 
+  padding: 30px;
+
+  border-radius: 20px;
+  background: #f3f4f6;
+
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+
+.admin-cap img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+
+.admin-title {
+  margin-bottom: 20px;
+}
+
+
+.admin-auth-card .admin-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+
+  border-radius: 10px;
+  border: none;
+
+  background: #0f172a;
+  color: white;
+}
+
+
+.admin-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.admin-auth-card .admin-btn {
+  width: 100%;
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(to right, #6366f1, #06b6d4);
+  color: white;
+
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+.admin-link {
+  color: blue;
+  cursor: pointer;
+}
+
+
+.dob-input {
+  width: 100% !important;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
